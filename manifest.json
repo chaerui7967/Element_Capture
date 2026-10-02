@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "PDF 캡처",
+  "version": "1.0.0",
+  "description": "웹페이지에서 클릭한 요소(컨테이너)만 PDF로 저장합니다.",
+  "permissions": ["activeTab", "scripting", "debugger", "storage", "downloads"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "요소 PDF 캡처",
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "start-selection": {
+      "suggested_key": { "default": "Alt+P" },
+      "description": "요소 선택 시작"
+    }
+  }
+}

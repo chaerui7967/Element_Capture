@@ -1,0 +1,71 @@
+:root {
+  --ink: #1e293b;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --accent: #2563eb;
+  --accent-soft: #eff4ff;
+  --danger: #b91c1c;
+}
+* { box-sizing: border-box; }
+body {
+  width: 300px; margin: 0; padding: 14px 16px 12px;
+  font: 13px/1.45 system-ui, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  color: var(--ink); background: #fff;
+}
+h1 { font-size: 15px; font-weight: 700; margin: 0 0 12px; }
+fieldset { border: 0; padding: 0; margin: 0 0 12px; }
+legend { font-size: 12px; color: var(--muted); margin-bottom: 6px; padding: 0; }
+
+.mode {
+  display: flex; align-items: center; gap: 12px; padding: 8px 10px; margin-bottom: 6px;
+  border: 1px solid var(--line); border-radius: 6px; cursor: pointer;
+}
+.mode input { position: absolute; opacity: 0; pointer-events: none; }
+.mode:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.mode:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mode-text { display: flex; flex-direction: column; }
+.mode-text small { color: var(--muted); font-size: 11.5px; }
+
+/* 페이지 모양 아이콘 */
+.glyph { flex: none; width: 26px; height: 34px; position: relative; }
+.glyph.strip::before {
+  content: ""; position: absolute; left: 7px; top: 0; width: 12px; height: 34px;
+  border: 1.5px solid currentColor; border-radius: 2px; color: var(--muted);
+}
+.glyph.sheets i {
+  position: absolute; width: 16px; height: 22px; border: 1.5px solid var(--muted);
+  border-radius: 2px; background: #fff;
+}
+.glyph.sheets i:first-child { left: 2px; top: 1px; }
+.glyph.sheets i:last-child { left: 8px; top: 10px; }
+.mode:has(input:checked) .glyph.strip::before,
+.mode:has(input:checked) .glyph.sheets i { border-color: var(--accent); }
+
+.a4-only { padding: 4px 0 6px 10px; margin: -4px 0 8px; border-left: 2px solid var(--accent-soft); }
+.a4-only[hidden] { display: none; }
+
+.row { display: flex; justify-content: space-between; align-items: center; margin: 6px 0; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg label { cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: block; padding: 3px 12px; }
+.seg input:checked + span { background: var(--accent); color: #fff; }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.num input { width: 56px; padding: 3px 6px; border: 1px solid var(--line); border-radius: 4px; font: inherit; text-align: right; }
+.checks { margin: 8px 0 12px; padding-top: 8px; border-top: 1px solid var(--line); }
+.check { display: flex; align-items: center; gap: 8px; margin: 5px 0; cursor: pointer; }
+.check input { accent-color: var(--accent); margin: 0; }
+
+button {
+  width: 100%; padding: 9px; border: 0; border-radius: 6px; cursor: pointer;
+  background: var(--accent); color: #fff; font: 600 13.5px/1 inherit;
+  font-family: inherit;
+}
+button:hover { background: #1d4ed8; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:disabled { opacity: .6; cursor: default; }
+.error { color: var(--danger); margin: 8px 0 0; min-height: 0; }
+.error:empty { display: none; }
+.foot { color: var(--muted); font-size: 11.5px; margin: 10px 0 0; }
+kbd { font: inherit; padding: 0 4px; border: 1px solid var(--line); border-radius: 3px; background: #f8fafc; }

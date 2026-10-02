@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>요소 PDF 캡처</h1>
+
+  <fieldset class="modes">
+    <legend>출력 방식</legend>
+    <label class="mode">
+      <input type="radio" name="mode" value="single">
+      <span class="glyph strip" aria-hidden="true"></span>
+      <span class="mode-text"><strong>한 장으로</strong><small>요소 크기 그대로 긴 페이지 1장</small></span>
+    </label>
+    <label class="mode">
+      <input type="radio" name="mode" value="a4">
+      <span class="glyph sheets" aria-hidden="true"><i></i><i></i></span>
+      <span class="mode-text"><strong>A4로 나누기</strong><small>A4 여러 장으로 분할</small></span>
+    </label>
+  </fieldset>
+
+  <div class="a4-only" id="a4Options">
+    <div class="row">
+      <span>용지 방향</span>
+      <div class="seg">
+        <label><input type="radio" name="orientation" value="portrait"><span>세로</span></label>
+        <label><input type="radio" name="orientation" value="landscape"><span>가로</span></label>
+      </div>
+    </div>
+    <label class="check"><input type="checkbox" id="fitWidth"> 요소 폭을 용지 폭에 맞추기</label>
+  </div>
+
+  <div class="row">
+    <label for="marginMm">여백</label>
+    <span class="num"><input type="number" id="marginMm" min="0" max="50" step="1"> mm</span>
+  </div>
+
+  <div class="checks">
+    <label class="check"><input type="checkbox" id="printBackground"> 배경색·배경 이미지 포함</label>
+    <label class="check"><input type="checkbox" id="screenMedia"> 화면에 보이는 그대로 출력</label>
+    <label class="check"><input type="checkbox" id="expandScroll"> 내부 스크롤 영역 펼치기</label>
+    <label class="check"><input type="checkbox" id="saveAs"> 저장할 때마다 위치 묻기</label>
+  </div>
+
+  <button id="start" type="button">요소 선택 시작</button>
+  <p class="error" id="error" role="alert"></p>
+  <p class="foot">단축키 <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> · 선택 중 <kbd>↑</kbd><kbd>↓</kbd>로 부모/자식 이동</p>
+
+  <script src="settings.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
